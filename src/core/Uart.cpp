@@ -20,13 +20,13 @@
 #include "Arduino.h"
 #include "wiring_private.h"
 
-Uart::Uart(SERCOM *_s, uint8_t _pinRX, uint8_t _pinTX, SercomRXPad _padRX, SercomUartTXPad _padTX)
+Uart::Uart(SERCOM *_s, uint16_t _pinRX, uint16_t _pinTX, SercomRXPad _padRX, SercomUartTXPad _padTX)
 {
-  sercom = _s;
-  uc_pinRX = _pinRX;
-  uc_pinTX = _pinTX;
-  uc_padRX=_padRX ;
-  uc_padTX=_padTX;
+	sercom = _s;
+	pinRX = _pinRX;
+	pinTX = _pinTX;
+	uc_padRX=_padRX;
+	uc_padTX=_padTX;
 }
 
 void Uart::begin(unsigned long baudrate)
@@ -36,14 +36,14 @@ void Uart::begin(unsigned long baudrate)
 
 void Uart::begin(unsigned long baudrate, uint16_t config)
 {
-  pinPeripheral(uc_pinRX, g_APinDescription[uc_pinRX].ulPinType);
-  pinPeripheral(uc_pinTX, g_APinDescription[uc_pinTX].ulPinType);
+	PortMultiplex(pinRX & 0xFF, pinRX >> 8);
+	PortMultiplex(pinTX & 0xFF, pinTX >> 8);
 
-  sercom->initUART(UART_INT_CLOCK, SAMPLE_RATE_x16, baudrate);
-  sercom->initFrame(extractCharSize(config), LSB_FIRST, extractParity(config), extractNbStopBit(config));
-  sercom->initPads(uc_padTX, uc_padRX);
+	sercom->initUART(UART_INT_CLOCK, SAMPLE_RATE_x16, baudrate);
+	sercom->initFrame(extractCharSize(config), LSB_FIRST, extractParity(config), extractNbStopBit(config));
+	sercom->initPads(uc_padTX, uc_padRX);
 
-  sercom->enableUART();
+	sercom->enableUART();
 }
 
 void Uart::end()
