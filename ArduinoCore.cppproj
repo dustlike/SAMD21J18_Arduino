@@ -288,6 +288,9 @@
     <Compile Include="include\core\delay.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="include\core\GPIO.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="include\core\HardwareSerial.h">
       <SubType>compile</SubType>
     </Compile>
@@ -670,6 +673,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\core\delay.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\core\GPIO.cpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\core\hooks.c">

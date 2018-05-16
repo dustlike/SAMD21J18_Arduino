@@ -77,6 +77,7 @@ void loop( void ) ;
   #include "WMath.h"
   #include "HardwareSerial.h"
   #include "pulse.h"
+  #include "GPIO.h"
 #endif
 #include "delay.h"
 #ifdef __cplusplus

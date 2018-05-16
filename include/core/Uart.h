@@ -52,8 +52,6 @@ class Uart : public HardwareSerial
     uint16_t pinTX;
     SercomRXPad uc_padRX;
     SercomUartTXPad uc_padTX;
-	EPioType muxRX;
-	EPioType muxTX;
 
     SercomNumberStopBit extractNbStopBit(uint16_t config);
     SercomUartCharSize extractCharSize(uint16_t config);

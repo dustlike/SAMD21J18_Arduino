@@ -25,13 +25,13 @@ Uart::Uart(SERCOM *_s, uint16_t _pinRX, uint16_t _pinTX, SercomRXPad _padRX, Ser
 	sercom = _s;
 	pinRX = _pinRX;
 	pinTX = _pinTX;
-	uc_padRX=_padRX;
-	uc_padTX=_padTX;
+	uc_padRX = _padRX;
+	uc_padTX = _padTX;
 }
 
 void Uart::begin(unsigned long baudrate)
 {
-  begin(baudrate, SERIAL_8N1);
+	begin(baudrate, SERIAL_8N1);
 }
 
 void Uart::begin(unsigned long baudrate, uint16_t config)
