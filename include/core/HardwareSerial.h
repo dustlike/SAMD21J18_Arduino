@@ -16,12 +16,15 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#ifndef HardwareSerial_h
-#define HardwareSerial_h
+
+#pragma once
+
 
 #include <inttypes.h>
 
 #include "Stream.h"
+#include "SERCOM.h"
+#include "RingBuffer.h"
 
 #define HARDSER_PARITY_EVEN (0x1ul)
 #define HARDSER_PARITY_ODD	(0x2ul)
@@ -64,21 +67,34 @@
 #define SERIAL_7O2	(HARDSER_STOP_BIT_2 | HARDSER_PARITY_ODD  | HARDSER_DATA_7)
 #define SERIAL_8O2	(HARDSER_STOP_BIT_2 | HARDSER_PARITY_ODD  | HARDSER_DATA_8)
 
-class HardwareSerial : public Stream
+
+class HardwareSerial : public Stream, public ISercomIRQ
 {
-  public:
-    virtual void begin(unsigned long);
-    virtual void begin(unsigned long baudrate, uint16_t config);
-    virtual void end();
-    virtual int available(void) = 0;
-    virtual int peek(void) = 0;
-    virtual int read(void) = 0;
-    virtual void flush(void) = 0;
-    virtual size_t write(uint8_t) = 0;
+public:
+	//(baud, SERCOMx, RX pin, TX pin, RX pinout, TX pinout, config)
+    void begin(uint32_t, SERCOM *, uint16_t, uint16_t, SercomRXPad, SercomUartTXPad, uint16_t config =SERIAL_8N1);
+    void end();
+	
+    virtual int available();
+	virtual int availableForWrite();
+    virtual int peek();
+    virtual int read();
+    virtual void flush();
+    virtual size_t write(uint8_t);
     using Print::write; // pull in write(str) and write(buf, size) from Print
-    virtual operator bool() = 0;
+	
+    operator bool() { return true; }
+	
+	virtual void IRQHandler();
+	
+private:
+	SERCOM_USART *sercom;
+	RingBuffer rxBuffer;
+	RingBuffer txBuffer;
+	
+	SercomNumberStopBit extractNbStopBit(uint16_t config);
+	SercomUartCharSize extractCharSize(uint16_t config);
+	SercomParityMode extractParity(uint16_t config);
 };
 
 extern void serialEventRun(void) __attribute__((weak));
-
-#endif

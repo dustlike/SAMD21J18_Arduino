@@ -76,13 +76,12 @@ void loop( void ) ;
   #include "Tone.h"
   #include "WMath.h"
   #include "HardwareSerial.h"
+  #include "I2C.h"
+  #include "SPI.h"
   #include "pulse.h"
   #include "GPIO.h"
 #endif
 #include "delay.h"
-#ifdef __cplusplus
-  #include "Uart.h"
-#endif
 
 // Include board variant
 #include "variant.h"

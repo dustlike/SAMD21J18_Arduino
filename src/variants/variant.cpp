@@ -196,10 +196,44 @@ const PinDescription g_APinDescription[]=
 
 const void* g_apTCInstances[TCC_INST_NUM+TC_INST_NUM]={ TCC0, TCC1, TCC2, TC3, TC4, TC5 } ;
 
-// Multi-serial objects instantiation
-SERCOM sercom0( SERCOM0 ) ;
-SERCOM sercom1( SERCOM1 ) ;
-SERCOM sercom2( SERCOM2 ) ;
-SERCOM sercom3( SERCOM3 ) ;
-SERCOM sercom4( SERCOM4 ) ;
-SERCOM sercom5( SERCOM5 ) ;
+
+SERCOM sercom0 = SERCOM(SERCOM0, SERCOM0_IRQn, GCM_SERCOM0_CORE);
+void SERCOM0_Handler()
+{
+	sercom0.handleIRQ();
+}
+
+
+SERCOM sercom1 = SERCOM(SERCOM1, SERCOM1_IRQn, GCM_SERCOM1_CORE);
+void SERCOM1_Handler()
+{
+	sercom1.handleIRQ();
+}
+
+
+SERCOM sercom2 = SERCOM(SERCOM2, SERCOM2_IRQn, GCM_SERCOM2_CORE);
+void SERCOM2_Handler()
+{
+	sercom2.handleIRQ();
+}
+
+
+SERCOM sercom3 = SERCOM(SERCOM3, SERCOM3_IRQn, GCM_SERCOM3_CORE);
+void SERCOM3_Handler()
+{
+	sercom3.handleIRQ();
+}
+
+
+SERCOM sercom4 = SERCOM(SERCOM4, SERCOM4_IRQn, GCM_SERCOM4_CORE);
+void SERCOM4_Handler()
+{
+	sercom4.handleIRQ();
+}
+
+
+SERCOM sercom5 = SERCOM(SERCOM5, SERCOM5_IRQn, GCM_SERCOM5_CORE);
+void SERCOM5_Handler()
+{
+	sercom5.handleIRQ();
+}

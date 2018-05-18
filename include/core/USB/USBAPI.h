@@ -101,6 +101,7 @@ public:
 	uint8_t armRecvCtrlOUT(uint32_t ep);
 
 	void ISRHandler();
+	volatile uint32_t lastSOFtick;
 
 private:
 	bool initialized;
@@ -177,7 +178,6 @@ private:
 	RingBuffer *_cdc_rx_buffer;
 	bool stalled;
 };
-extern Serial_ SerialUSB;
 
 //================================================================================
 //================================================================================

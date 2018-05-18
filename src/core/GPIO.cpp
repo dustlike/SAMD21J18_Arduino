@@ -89,9 +89,6 @@ void PortMode(uint32_t pinName, int mode)
 		PORT->Group[grp].DIRCLR.reg = 1 << pin;
 		PORT->Group[grp].OUTSET.reg = 1 << pin;
 		break;
-		
-		default:
-		return;
 	}
 }
 

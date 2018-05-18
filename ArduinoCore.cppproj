@@ -591,13 +591,16 @@
     <Compile Include="include\core\Server.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="include\core\SPI.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="include\core\Stream.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="include\core\Tone.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="include\core\Uart.h">
+    <Compile Include="include\core\I2C.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="include\core\Udp.h">
@@ -678,7 +681,13 @@
     <Compile Include="src\core\GPIO.cpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\core\HardwareSerial.cpp">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\core\hooks.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\core\I2C.cpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\core\IPAddress.cpp">
@@ -714,6 +723,9 @@
     <Compile Include="src\core\SERCOM.cpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\core\SPI.cpp">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\core\startup.c">
       <SubType>compile</SubType>
     </Compile>
@@ -721,9 +733,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\core\Tone.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="src\core\Uart.cpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\core\USB\CDC.cpp">

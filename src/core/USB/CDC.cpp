@@ -112,23 +112,7 @@ bool CDC_Setup(USBSetup& setup)
 		{
 			_usbLineInfo.lineState = setup.wValueL;
 		}
-
-		if (r == CDC_SET_LINE_CODING || r == CDC_SET_CONTROL_LINE_STATE)
-		{
-			// auto-reset into the bootloader is triggered when the port, already
-			// open at 1200 bps, is closed. We check DTR state to determine if host 
-			// port is open (bit 0 of lineState).
-			if (_usbLineInfo.dwDTERate == 1200 && (_usbLineInfo.lineState & 0x01) == 0)
-			{
-				initiateReset(250);
-			}
-			else
-			{
-				cancelReset();
-			}
-			return false;
-		}
-
+		
 		if (CDC_SEND_BREAK == r)
 		{
 			breakValue = ((uint16_t)setup.wValueH << 8) | setup.wValueL;
@@ -286,7 +270,5 @@ bool Serial_::dtr() {
 bool Serial_::rts() {
 	return _usbLineInfo.lineState & 0x2;
 }
-
-Serial_ SerialUSB(USBDevice);
 
 #endif

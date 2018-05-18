@@ -40,7 +40,6 @@
 
 #ifdef __cplusplus
 #include "SERCOM.h"
-#include "Uart.h"
 #endif // __cplusplus
 
 #ifdef __cplusplus
@@ -74,37 +73,6 @@ extern "C"
  *
  * https://github.com/arduino/Arduino/issues/1833
  */
-// #define digitalPinToTimer(P)
-
-// LEDs
-#define PIN_LED_13           (13u)
-#define PIN_LED_RXL          (30u)
-#define PIN_LED_TXL          (31u)
-#define PIN_LED              PIN_LED_13
-#define PIN_LED2             PIN_LED_RXL
-#define PIN_LED3             PIN_LED_TXL
-#define LED_BUILTIN          PIN_LED_13
-
-/*
- * Analog pins
- */
-#define PIN_A0               (24ul)
-#define PIN_A1               (25ul)
-#define PIN_A2               (26ul)
-#define PIN_A3               (27ul)
-#define PIN_A4               (28ul)
-#define PIN_A5               (29ul)
-#define PIN_DAC0             (24ul)
-
-static const uint8_t A0  = PIN_A0;
-static const uint8_t A1  = PIN_A1;
-static const uint8_t A2  = PIN_A2;
-static const uint8_t A3  = PIN_A3;
-static const uint8_t A4  = PIN_A4;
-static const uint8_t A5  = PIN_A5;
-static const uint8_t DAC0 = PIN_DAC0;
-#define ADC_RESOLUTION		12
-
 
 /*
  * USB

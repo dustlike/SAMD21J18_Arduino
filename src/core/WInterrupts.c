@@ -130,6 +130,15 @@ void detachInterrupt(uint32_t pin)
 
   EIC->INTENCLR.reg = EIC_INTENCLR_EXTINT(1 << in);
   
+  //根據SAMD21的Datasheet在 20.8.8 Interrupt Flag Status and Clear 的說法：
+  //  This flag is set when EXINTx pin matches the external interrupt sense configuration
+  //即使有INTENCLR過也會導致INTFLAG中的EXINTx變1，頂多不會引發中斷
+  //但等到下次INTENSET就會立即引發中斷。總之SENSEx必須要改成NONE
+  // Configure the interrupt mode to NONE
+  unsigned int cfg = in>=EXTERNAL_INT_8? 1 : 0;
+  unsigned int pos = (cfg? (in - EXTERNAL_INT_8) : (in - EXTERNAL_INT_0)) * 4;
+  EIC->CONFIG[cfg].reg &= ~(7ul << pos);
+  
   // Disable wakeup capability on pin during sleep
   EIC->WAKEUP.reg &= ~(1 << in);
 }
