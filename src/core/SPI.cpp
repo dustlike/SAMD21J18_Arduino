@@ -27,7 +27,7 @@ void SerialPerIface::begin(SERCOM *scm, uint32_t freqSCK, BitOrder bitOrder, Ser
 	SercomDataOrder sdo = ((bitOrder == MSBFIRST)?  SERCOM_MSBFIRST : SERCOM_LSBFIRST);
 	
 	sercom = reinterpret_cast<SERCOM_SPI *>(scm->base);
-	//scm->bindIRQ(this);	//SerialPerIface目前還暫時不依賴IRQ處理來接收資料.
+	scm->bindIRQ();		//SerialPerIface目前還暫時不依賴IRQ處理來接收資料.
 	scm->initClockNVIC();
 	
 	PortMultiplex(pinMISO & 0xFF, pinMISO >> 8);
