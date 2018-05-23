@@ -28,7 +28,7 @@ void HardwareSerial::begin(uint32_t baudrate, SERCOM *scm, uint16_t pinRX, uint1
 	scm->initClockNVIC();
 	
 	sercom->initUART(SAMPLE_RATE_x16, baudrate);
-	sercom->initFrame(extractCharSize(config), LSB_FIRST, extractParity(config), extractNbStopBit(config));
+	sercom->initFrame(extractCharSize(config), SERCOM_LSBFIRST, extractParity(config), extractNbStopBit(config));
 	sercom->initPads(padTX, padRX);
 	PortMultiplex(pinRX & 0xFF, pinRX >> 8);
 	PortMultiplex(pinTX & 0xFF, pinTX >> 8);

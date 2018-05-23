@@ -23,39 +23,20 @@
 #include <Arduino.h>
 
 
-struct SPISettings
-{
-	SPISettings(uint32_t clock = 4000000, BitOrder _bitOrder = MSBFIRST, SercomSpiClockMode _dataMode = SPI_MODE_0)
-		: clockFreq(clock), dataMode(_dataMode)
-	{
-		//transform between BitOrder and SercomDataOrder
-		if (_bitOrder == MSBFIRST)
-		{
-			bitOrder = MSB_FIRST;
-		}
-		else
-		{
-			bitOrder = LSB_FIRST;
-		}
-	}
-	
-	uint32_t clockFreq;
-	SercomSpiClockMode dataMode;
-	SercomDataOrder bitOrder;
-};
-
-
 class SerialPerIface
 {
 public:
-	void begin(SPISettings, SERCOM *scm, uint16_t pinMISO, uint16_t pinSCK, uint16_t pinMOSI, SercomSpiTXPad, SercomRXPad);
+	
+	// sercom物件, SPI時鐘頻率, 位元順序, CPHA與CPOL設定
+	// MISO腳位, SCLK腳位, MOSI腳位, 接收腳位選擇, SPI腳位選擇
+	// 腳位格式： (bit0~7)PIN_Pxyy   (bit8~15)PIO_SERCOM / PIO_SERCOM_ALT
+	void begin(SERCOM *, uint32_t, BitOrder, SercomSpiClockMode, uint16_t, uint16_t, uint16_t, SercomRXPad, SercomSpiTXPad);
+	
 	void end();
 	uint8_t transfer(uint8_t data) { return sercom->transferDataSPI(data); }
 	uint16_t transfer16(uint16_t data);
 	void transfer(void *buf, size_t count);
 	
 private:
-	void config(SPISettings settings);
-
 	SERCOM_SPI *sercom;
 };

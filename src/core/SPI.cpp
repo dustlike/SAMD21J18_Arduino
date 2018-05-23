@@ -21,18 +21,21 @@
 #include <Arduino.h>
 
 
-void SerialPerIface::begin(SPISettings setting, SERCOM *scm, uint16_t pinMISO, uint16_t pinSCK, uint16_t pinMOSI, SercomSpiTXPad padTX, SercomRXPad padRX)
+
+void SerialPerIface::begin(SERCOM *scm, uint32_t freqSCK, BitOrder bitOrder, SercomSpiClockMode clockMode, uint16_t pinMISO, uint16_t pinSCK, uint16_t pinMOSI, SercomRXPad padRX, SercomSpiTXPad padTX)
 {
+	SercomDataOrder sdo = ((bitOrder == MSBFIRST)?  SERCOM_MSBFIRST : SERCOM_LSBFIRST);
+	
 	sercom = reinterpret_cast<SERCOM_SPI *>(scm->base);
-	//scm->bindIRQ(this);
+	//scm->bindIRQ(this);	//SerialPerIface目前還暫時不依賴IRQ處理來接收資料.
 	scm->initClockNVIC();
 	
 	PortMultiplex(pinMISO & 0xFF, pinMISO >> 8);
 	PortMultiplex(pinSCK  & 0xFF, pinSCK  >> 8);
 	PortMultiplex(pinMOSI & 0xFF, pinMOSI >> 8);
 	
-	sercom->initSPI(padTX, padRX, SPI_CHAR_SIZE_8_BITS, setting.bitOrder);
-	sercom->initSPIClock(setting.dataMode, setting.clockFreq);
+	sercom->initSPI(padTX, padRX, SPI_CHAR_SIZE_8_BITS, sdo);
+	sercom->initSPIClock(clockMode, freqSCK);
 	sercom->enableSPI();
 }
 
@@ -49,7 +52,7 @@ uint16_t SerialPerIface::transfer16(uint16_t data)
 
 	t.val = data;
 
-	if (sercom->getDataOrderSPI() == LSB_FIRST)
+	if (sercom->getDataOrderSPI() == SERCOM_LSBFIRST)
 	{
 		t.lsb = transfer(t.lsb);
 		t.msb = transfer(t.msb);

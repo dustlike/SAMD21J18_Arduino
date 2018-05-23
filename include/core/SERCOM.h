@@ -50,8 +50,8 @@ typedef enum
 
 typedef enum
 {
-	MSB_FIRST = 0,
-	LSB_FIRST
+	SERCOM_MSBFIRST = 0,
+	SERCOM_LSBFIRST
 } SercomDataOrder;
 
 typedef enum
@@ -251,7 +251,7 @@ public:
 	void disableSPI();
 	uint8_t transferDataSPI(uint8_t data);
 	
-	SercomDataOrder getDataOrderSPI() { return CTRLA.bit.DORD ? LSB_FIRST : MSB_FIRST; }
+	SercomDataOrder getDataOrderSPI() { return CTRLA.bit.DORD ? SERCOM_LSBFIRST : SERCOM_MSBFIRST; }
 	bool isBufferOverflowErrorSPI() { return STATUS.bit.BUFOVF; }
 	bool isDataRegisterEmptySPI() { return INTFLAG.bit.DRE; }
 	bool isTransmitCompleteSPI() { return INTFLAG.bit.TXC; }
