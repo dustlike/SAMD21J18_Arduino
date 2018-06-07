@@ -192,9 +192,9 @@ class SERCOM_USART : public SercomUsart
 	bool isDataRegisterEmptyUART() { return INTFLAG.bit.DRE; }
 	uint8_t readDataUART() { return DATA.reg; }
 	bool isUARTError() { return INTFLAG.bit.ERROR; }
-	void acknowledgeUARTError() { INTFLAG.bit.ERROR = 1; }
-	void enableDataRegisterEmptyInterruptUART() { INTENSET.bit.DRE = 1; }
-	void disableDataRegisterEmptyInterruptUART() { INTENCLR.bit.DRE = 1; }
+	void acknowledgeUARTError() { INTFLAG.reg = SERCOM_USART_INTFLAG_ERROR; }
+	void enableDataRegisterEmptyInterruptUART() { INTENSET.reg = SERCOM_USART_INTENSET_DRE; }
+	void disableDataRegisterEmptyInterruptUART() { INTENCLR.reg = SERCOM_USART_INTENCLR_DRE; }
 };
 
 
