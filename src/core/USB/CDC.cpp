@@ -17,7 +17,6 @@
 */
 
 #include <Arduino.h>
-#include <Reset.h> // Needed for auto-reset with 1200bps port touch
 
 #include <stdlib.h>
 #include <stdio.h>

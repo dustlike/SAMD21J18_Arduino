@@ -18,6 +18,7 @@
 
 #define ARDUINO_MAIN
 #include "Arduino.h"
+#include <new>
 
 // Weak empty variant initialization function.
 // May be redefined by variant files.
@@ -33,12 +34,11 @@ extern "C" void __libc_init_array(void);
 int main( void )
 {
   init();
-
+  
   __libc_init_array();
 
   initVariant();
 
-  delay(1);
 #if defined(USBCON)
   //USBDevice.init();
   //USBDevice.attach();

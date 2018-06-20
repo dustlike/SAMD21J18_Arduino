@@ -18,6 +18,8 @@
 
 #include "delay.h"
 #include "Arduino.h"
+#include "FreeRTOS.h"
+#include "task.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -63,6 +65,10 @@ unsigned long micros( void )
 
 void delay( unsigned long ms )
 {
+	vTaskDelay(pdMS_TO_TICKS(ms));
+	
+	
+	#if 0
   if ( ms == 0 )
   {
     return ;
@@ -74,16 +80,16 @@ void delay( unsigned long ms )
   {
     yield() ;
   } while ( _ulTickCount - start < ms ) ;
+  #endif
 }
 
-#include "Reset.h" // for tickReset()
 
-void SysTick_DefaultHandler(void)
+void vApplicationTickHook(void)
 {
-  // Increment tick count each ms
-  _ulTickCount++;
-  tickReset();
+	// Increment tick count each ms
+	_ulTickCount++;
 }
+
 
 #ifdef __cplusplus
 }

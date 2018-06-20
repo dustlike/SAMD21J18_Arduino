@@ -42,7 +42,22 @@
         </dependencies>
       </framework-data>
     </AsfFrameworkConfig>
-    <avrtool />
+    <avrtool>com.atmel.avrdbg.tool.edbg</avrtool>
+    <avrtoolserialnumber>ATML2130021800027506</avrtoolserialnumber>
+    <avrdeviceexpectedsignature>0x10010300</avrdeviceexpectedsignature>
+    <avrtoolinterface>SWD</avrtoolinterface>
+    <com_atmel_avrdbg_tool_edbg>
+      <ToolOptions>
+        <InterfaceProperties>
+          <SwdClock>2000000</SwdClock>
+        </InterfaceProperties>
+        <InterfaceName>SWD</InterfaceName>
+      </ToolOptions>
+      <ToolType>com.atmel.avrdbg.tool.edbg</ToolType>
+      <ToolNumber>ATML2130021800027506</ToolNumber>
+      <ToolName>EDBG MSD</ToolName>
+    </com_atmel_avrdbg_tool_edbg>
+    <avrtoolinterfaceclock>2000000</avrtoolinterfaceclock>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -54,7 +69,6 @@
         <armgcc.common.outputfiles.srec>True</armgcc.common.outputfiles.srec>
         <armgcc.compiler.symbols.DefSymbols>
           <ListValues>
-            <Value>NDEBUG</Value>
             <Value>F_CPU=48000000L</Value>
             <Value>ARDUINO=10804</Value>
             <Value>ARDUINO_SAM_ZERO</Value>
@@ -65,6 +79,7 @@
             <Value>USB_MANUFACTURER="\"Arduino LLC\""</Value>
             <Value>USBCON</Value>
             <Value>SAMD_SERIES</Value>
+            <Value>NDEBUG</Value>
           </ListValues>
         </armgcc.compiler.symbols.DefSymbols>
         <armgcc.compiler.directories.IncludePaths>
@@ -80,6 +95,7 @@
             <Value>..\include\core\samd21\include\pio</Value>
             <Value>%24(PackRepoDir)\arm\cmsis\5.0.1\CMSIS\Include\</Value>
             <Value>%24(PackRepoDir)\atmel\SAMD21_DFP\1.2.280\samd21a\include</Value>
+            <Value>../include/FreeRTOS</Value>
           </ListValues>
         </armgcc.compiler.directories.IncludePaths>
         <armgcc.compiler.optimization.level>Optimize for size (-Os)</armgcc.compiler.optimization.level>
@@ -92,7 +108,6 @@
         <armgcc.compiler.miscellaneous.OtherFlags>-std=gnu11 --param max-inline-insns-single=500 -nostdlib</armgcc.compiler.miscellaneous.OtherFlags>
         <armgcccpp.compiler.symbols.DefSymbols>
           <ListValues>
-            <Value>NDEBUG</Value>
             <Value>F_CPU=48000000L</Value>
             <Value>ARDUINO=10804</Value>
             <Value>ARDUINO_SAM_ZERO</Value>
@@ -103,6 +118,7 @@
             <Value>USB_MANUFACTURER="\"Arduino LLC\""</Value>
             <Value>USBCON</Value>
             <Value>SAMD_SERIES</Value>
+            <Value>NDEBUG</Value>
           </ListValues>
         </armgcccpp.compiler.symbols.DefSymbols>
         <armgcccpp.compiler.directories.IncludePaths>
@@ -136,6 +152,7 @@
           </ListValues>
         </armgcccpp.linker.libraries.Libraries>
         <armgcccpp.linker.optimization.GarbageCollectUnusedSections>True</armgcccpp.linker.optimization.GarbageCollectUnusedSections>
+        <armgcccpp.linker.memorysettings.ExternalRAM>False</armgcccpp.linker.memorysettings.ExternalRAM>
         <armgcccpp.linker.miscellaneous.LinkerFlags>-Wl,--cref -Os -Wl,--check-sections -Wl,--unresolved-symbols=report-all -Wl,--warn-common -Wl,--warn-section-align</armgcccpp.linker.miscellaneous.LinkerFlags>
         <armgcccpp.assembler.general.IncludePaths>
           <ListValues>
@@ -163,7 +180,6 @@
         <armgcc.common.outputfiles.srec>True</armgcc.common.outputfiles.srec>
         <armgcc.compiler.symbols.DefSymbols>
           <ListValues>
-            <Value>DEBUG</Value>
             <Value>F_CPU=48000000L</Value>
             <Value>ARDUINO=10804</Value>
             <Value>ARDUINO_SAM_ZERO</Value>
@@ -174,6 +190,7 @@
             <Value>USB_MANUFACTURER="\"Arduino LLC\""</Value>
             <Value>USBCON</Value>
             <Value>SAMD_SERIES</Value>
+            <Value>DEBUG</Value>
           </ListValues>
         </armgcc.compiler.symbols.DefSymbols>
         <armgcc.compiler.directories.IncludePaths>
@@ -189,6 +206,7 @@
             <Value>..\include\core\samd21\include\pio</Value>
             <Value>%24(PackRepoDir)\arm\cmsis\5.0.1\CMSIS\Include\</Value>
             <Value>%24(PackRepoDir)\atmel\SAMD21_DFP\1.2.280\samd21a\include</Value>
+            <Value>../include/FreeRTOS</Value>
           </ListValues>
         </armgcc.compiler.directories.IncludePaths>
         <armgcc.compiler.optimization.level>Optimize for size (-Os)</armgcc.compiler.optimization.level>
@@ -201,7 +219,6 @@
         <armgcc.compiler.miscellaneous.OtherFlags>-std=gnu11 --param max-inline-insns-single=500 -nostdlib</armgcc.compiler.miscellaneous.OtherFlags>
         <armgcccpp.compiler.symbols.DefSymbols>
           <ListValues>
-            <Value>DEBUG</Value>
             <Value>F_CPU=48000000L</Value>
             <Value>ARDUINO=10804</Value>
             <Value>ARDUINO_SAM_ZERO</Value>
@@ -212,6 +229,7 @@
             <Value>USB_MANUFACTURER="\"Arduino LLC\""</Value>
             <Value>USBCON</Value>
             <Value>SAMD_SERIES</Value>
+            <Value>DEBUG</Value>
           </ListValues>
         </armgcccpp.compiler.symbols.DefSymbols>
         <armgcccpp.compiler.directories.IncludePaths>
@@ -245,6 +263,7 @@
           </ListValues>
         </armgcccpp.linker.libraries.Libraries>
         <armgcccpp.linker.optimization.GarbageCollectUnusedSections>True</armgcccpp.linker.optimization.GarbageCollectUnusedSections>
+        <armgcccpp.linker.memorysettings.ExternalRAM>False</armgcccpp.linker.memorysettings.ExternalRAM>
         <armgcccpp.linker.miscellaneous.LinkerFlags>-Wl,--cref -Os -Wl,--check-sections -Wl,--unresolved-symbols=report-all -Wl,--warn-common -Wl,--warn-section-align</armgcccpp.linker.miscellaneous.LinkerFlags>
         <armgcccpp.assembler.general.IncludePaths>
           <ListValues>
@@ -307,9 +326,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="include\core\pulse.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="include\core\Reset.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="include\core\RingBuffer.h">
@@ -660,6 +676,63 @@
     <Compile Include="include\core\WVariant.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="include\FreeRTOS\croutine.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\FreeRTOS\deprecated_definitions.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\FreeRTOS\event_groups.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\FreeRTOS\FreeRTOS.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\FreeRTOS\list.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\FreeRTOS\message_buffer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\FreeRTOS\mpu_prototypes.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\FreeRTOS\mpu_wrappers.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\FreeRTOS\portable.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\FreeRTOS\portmacro.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\FreeRTOS\projdefs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\FreeRTOS\queue.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\FreeRTOS\semphr.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\FreeRTOS\StackMacros.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\FreeRTOS\stack_macros.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\FreeRTOS\stream_buffer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\FreeRTOS\task.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\FreeRTOS\timers.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\variants\FreeRTOSConfig.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="include\variants\pins_arduino.h">
       <SubType>compile</SubType>
     </Compile>
@@ -712,9 +785,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\core\pulse_asm.S">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="src\core\Reset.cpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\core\RingBuffer.cpp">
@@ -771,6 +841,21 @@
     <Compile Include="src\core\WString.cpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\FreeRTOS\heap_3.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\FreeRTOS\list.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\FreeRTOS\port.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\FreeRTOS\queue.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\FreeRTOS\tasks.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\variants\variant.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -785,12 +870,14 @@
     <Folder Include="include\core\samd21\include\instance\" />
     <Folder Include="include\core\samd21\include\pio\" />
     <Folder Include="include\core\USB\" />
+    <Folder Include="include\FreeRTOS\" />
     <Folder Include="include\variants\" />
     <Folder Include="src\" />
     <Folder Include="src\core\" />
     <Folder Include="src\core\avr\" />
     <Folder Include="src\core\PreprocessingAssembly\" />
     <Folder Include="src\core\USB\" />
+    <Folder Include="src\FreeRTOS" />
     <Folder Include="src\variants\" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />

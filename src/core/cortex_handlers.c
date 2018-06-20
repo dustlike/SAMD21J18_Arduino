@@ -164,15 +164,7 @@ void Reset_Handler(void)
     ;
 }
 
-/* Default Arduino systick handler */
-extern void SysTick_DefaultHandler(void);
 
-void SysTick_Handler(void)
-{
-  if (sysTickHook())
-    return;
-  SysTick_DefaultHandler();
-}
 
 static void (*usb_isr)(void) = NULL;
 

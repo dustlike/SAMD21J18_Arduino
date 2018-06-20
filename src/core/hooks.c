@@ -40,7 +40,6 @@ static int __false() {
 	// Return false
 	return 0;
 }
-int sysTickHook(void) __attribute__ ((weak, alias("__false")));
 
 /**
  * SVC hook
