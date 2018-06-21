@@ -25,9 +25,6 @@
 #include "variant.h"
 #include "USB_host.h"
 #include "samd21_host.h"
-#include "sam.h"
-#include "wiring_digital.h"
-#include "wiring_private.h"
 
 #define HOST_DEFINED
 #ifdef HOST_DEFINED
@@ -70,8 +67,8 @@ void UHD_Init(void)
 	PM->APBBMASK.reg |= PM_APBBMASK_USB;
 
 	/* Set up the USB DP/DM pins */
-	pinPeripheral( PIN_USB_DM, PIO_COM );
-	pinPeripheral( PIN_USB_DP, PIO_COM );
+	pinMultiplex( PIN_USB_DM, PIO_COM );
+	pinMultiplex( PIN_USB_DP, PIO_COM );
 // 	PORT->Group[0].PINCFG[PIN_PA24G_USB_DM].bit.PMUXEN = 1;
 // 	PORT->Group[0].PMUX[PIN_PA24G_USB_DM/2].reg &= ~(0xF << (4 * (PIN_PA24G_USB_DM & 0x01u)));
 // 	PORT->Group[0].PMUX[PIN_PA24G_USB_DM/2].reg |= MUX_PA24G_USB_DM << (4 * (PIN_PA24G_USB_DM & 0x01u));

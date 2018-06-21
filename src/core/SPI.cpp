@@ -30,9 +30,9 @@ void SerialPerIface::begin(SERCOM *scm, uint32_t freqSCK, BitOrder bitOrder, Ser
 	scm->bindIRQ();		//SerialPerIface目前還暫時不依賴IRQ處理來接收資料.
 	scm->initClockNVIC();
 	
-	PortMultiplex(pinMISO & 0xFF, pinMISO >> 8);
-	PortMultiplex(pinSCK  & 0xFF, pinSCK  >> 8);
-	PortMultiplex(pinMOSI & 0xFF, pinMOSI >> 8);
+	pinMultiplex(pinMISO & 0xFF, pinMISO >> 8);
+	pinMultiplex(pinSCK  & 0xFF, pinSCK  >> 8);
+	pinMultiplex(pinMOSI & 0xFF, pinMOSI >> 8);
 	
 	sercom->initSPI(padTX, padRX, SPI_CHAR_SIZE_8_BITS, sdo);
 	sercom->initSPIClock(clockMode, freqSCK);

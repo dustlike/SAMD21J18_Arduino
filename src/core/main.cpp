@@ -18,7 +18,6 @@
 
 #define ARDUINO_MAIN
 #include "Arduino.h"
-#include <new>
 
 // Weak empty variant initialization function.
 // May be redefined by variant files.
@@ -45,12 +44,9 @@ int main( void )
 #endif
 
   setup();
-
-  for (;;)
-  {
-    loop();
-    if (serialEventRun) serialEventRun();
-  }
+  
+  vTaskStartScheduler();
+  for (;;) ;
 
   return 0;
 }

@@ -27,6 +27,8 @@ extern unsigned long countPulseASM(const volatile uint32_t *port, uint32_t bit, 
  * before the start of the pulse. */
 uint32_t pulseIn(uint32_t pin, uint32_t state, uint32_t timeout)
 {
+	// �ݭ״_
+	#if 0
   // cache the port and bit of the pin in order to speed up the
   // pulse width measuring loop and achieve finer resolution.  calling
   // digitalRead() instead yields much coarser resolution.
@@ -47,6 +49,7 @@ uint32_t pulseIn(uint32_t pin, uint32_t state, uint32_t timeout)
   if (width)
     return clockCyclesToMicroseconds(width * 13 + 16);
   else
+  #endif
     return 0;
 }
 

@@ -36,8 +36,8 @@ void TwoWire::begin(SERCOM *scm, uint16_t pinSDA, uint16_t pinSCL)
 	scm->bindIRQ(this);
 	scm->initClockNVIC();
 	
-	PortMultiplex(pinSDA & 0xFF, pinSDA >> 8);
-	PortMultiplex(pinSCL & 0xFF, pinSCL >> 8);
+	pinMultiplex(pinSDA & 0xFF, pinSDA >> 8);
+	pinMultiplex(pinSCL & 0xFF, pinSCL >> 8);
 	
 	sercom->initMasterWIRE(master_mode_clock);
 	sercom->enableWIRE();
@@ -52,8 +52,8 @@ void TwoWire::begin(uint8_t address, SERCOM *scm, uint16_t pinSDA, uint16_t pinS
 	scm->bindIRQ(this);
 	scm->initClockNVIC();
 	
-	PortMultiplex(pinSDA & 0xFF, pinSDA >> 8);
-	PortMultiplex(pinSCL & 0xFF, pinSCL >> 8);
+	pinMultiplex(pinSDA & 0xFF, pinSDA >> 8);
+	pinMultiplex(pinSCL & 0xFF, pinSCL >> 8);
 	
 	sercom->initSlaveWIRE(address);
 	sercom->enableWIRE();

@@ -30,8 +30,8 @@ void HardwareSerial::begin(uint32_t baudrate, SERCOM *scm, uint16_t pinRX, uint1
 	sercom->initUART(SAMPLE_RATE_x16, baudrate);
 	sercom->initFrame(extractCharSize(config), SERCOM_LSBFIRST, extractParity(config), extractNbStopBit(config));
 	sercom->initPads(padTX, padRX);
-	PortMultiplex(pinRX & 0xFF, pinRX >> 8);
-	PortMultiplex(pinTX & 0xFF, pinTX >> 8);
+	pinMultiplex(pinRX & 0xFF, pinRX >> 8);
+	pinMultiplex(pinTX & 0xFF, pinTX >> 8);
 	
 	sercom->enableUART();
 }

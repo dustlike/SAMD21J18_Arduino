@@ -19,9 +19,6 @@
 #ifndef _WIRING_CONSTANTS_
 #define _WIRING_CONSTANTS_
 
-#ifdef __cplusplus
-extern "C"{
-#endif // __cplusplus
 
 #define LOW             (0x0)
 #define HIGH            (0x1)
@@ -49,18 +46,5 @@ enum BitOrder {
 	MSBFIRST = 1
 };
 
-// moved to WInterrupts.h
-////      LOW 0
-////      HIGH 1
-//#define CHANGE 2
-//#define FALLING 3
-//#define RISING 4
-//
-//#define DEFAULT 1
-//#define EXTERNAL 0
-
-#ifdef __cplusplus
-} // extern "C"
-#endif // __cplusplus
 
 #endif /* _WIRING_CONSTANTS_ */

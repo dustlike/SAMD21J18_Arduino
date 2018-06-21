@@ -10,7 +10,7 @@
 
 
 
-void PortWrite(uint32_t pinName, bool level)
+void digitalWrite(uint32_t pinName, bool level)
 {
 	uint32_t grp = pinName >> 5;
 	
@@ -29,7 +29,7 @@ void PortWrite(uint32_t pinName, bool level)
 }
 
 
-bool PortRead(uint32_t pinName)
+bool digitalRead(uint32_t pinName)
 {
 	uint32_t grp = pinName >> 5;
 	
@@ -41,7 +41,7 @@ bool PortRead(uint32_t pinName)
 }
 
 
-void PortMode(uint32_t pinName, int mode)
+void pinMode(uint32_t pinName, int mode)
 {
 	uint32_t grp = pinName >> 5;
 	
@@ -93,7 +93,7 @@ void PortMode(uint32_t pinName, int mode)
 }
 
 
-void PortSet(uint32_t pinName)
+void pinSet(uint32_t pinName)
 {
 	uint32_t grp = pinName >> 5;
 	
@@ -105,7 +105,7 @@ void PortSet(uint32_t pinName)
 }
 
 
-void PortClear(uint32_t pinName)
+void pinClr(uint32_t pinName)
 {
 	uint32_t grp = pinName >> 5;
 	
@@ -117,7 +117,7 @@ void PortClear(uint32_t pinName)
 }
 
 
-void PortToggle(uint32_t pinName)
+void pinToggle(uint32_t pinName)
 {
 	uint32_t grp = pinName >> 5;
 	
@@ -129,7 +129,7 @@ void PortToggle(uint32_t pinName)
 }
 
 
-void PortMultiplex(uint32_t pinName, int pinMux)
+void pinMultiplex(uint32_t pinName, int pinMux)
 {
 	uint32_t grp = pinName >> 5;
 	
@@ -157,13 +157,18 @@ void PortMultiplex(uint32_t pinName, int pinMux)
 }
 
 
-uint16_t ReadADC(uint32_t pin_name)
+uint16_t analogRead(uint32_t pin_name)
 {
-	PortMultiplex(pin_name & 0xFF, PIO_ANALOG);
+	if (pin_name >= MAX_PIN_NUMBER) return 65535;
+	
+	AdcChannel channel = AdcChannelMapping[pin_name];
+	if (channel == No_ADC_Channel) return 65535;
+	
+	pinMultiplex(pin_name, PIO_ANALOG);
 	
 	//select ADC channel
 	while (ADC->STATUS.bit.SYNCBUSY);
-	ADC->INPUTCTRL.bit.MUXPOS = pin_name >> 8;
+	ADC->INPUTCTRL.bit.MUXPOS = (int)channel;
 	
 	//enable ADC
 	while (ADC->STATUS.bit.SYNCBUSY);

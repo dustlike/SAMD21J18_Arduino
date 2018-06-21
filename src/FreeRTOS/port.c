@@ -360,6 +360,8 @@ void prvSetupTimerInterrupt( void )
 }
 /*-----------------------------------------------------------*/
 
+#include "samd21.h"
+
 void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName )
 {
 	//trap stack overflow

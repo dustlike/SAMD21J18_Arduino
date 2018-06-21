@@ -96,5 +96,3 @@ private:
 	SercomUartCharSize extractCharSize(uint16_t config);
 	SercomParityMode extractParity(uint16_t config);
 };
-
-extern void serialEventRun(void) __attribute__((weak));

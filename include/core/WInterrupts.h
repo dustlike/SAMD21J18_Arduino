@@ -21,10 +21,6 @@
 
 #include <stdint.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 //      LOW 0
 //      HIGH 1
 #define CHANGE 2
@@ -46,9 +42,5 @@ void attachInterrupt(uint32_t pin, voidFuncPtr callback, uint32_t mode);
  * \brief Turns off the given interrupt.
  */
 void detachInterrupt(uint32_t pin);
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif

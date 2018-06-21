@@ -18,7 +18,8 @@
 
 #pragma once
 
-#ifdef __cplusplus
+//#ifdef __cplusplus
+#if 0
 
 #include "Arduino.h"
 

@@ -65,6 +65,11 @@ void loop( void ) ;
 
 #include "WVariant.h"
 
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "list.h"
+
 #ifdef __cplusplus
 } // extern "C"
 #endif
@@ -87,9 +92,6 @@ void loop( void ) ;
 #include "variant.h"
 
 #include "wiring.h"
-#include "wiring_digital.h"
-#include "wiring_analog.h"
-#include "wiring_shift.h"
 #include "WInterrupts.h"
 
 // undefine stdlib's abs if encountered

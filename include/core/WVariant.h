@@ -21,40 +21,38 @@
 #include <stdint.h>
 #include "sam.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
 
-/* Definitions and types for pins */
-typedef enum _EAnalogChannel
+#define MAX_PIN_NUMBER	64
+
+
+//ADC Channels Definition
+enum AdcChannel
 {
-  No_ADC_Channel=-1,
-  ADC_Channel0=0,
-  ADC_Channel1=1,
-  ADC_Channel2=2,
-  ADC_Channel3=3,
-  ADC_Channel4=4,
-  ADC_Channel5=5,
-  ADC_Channel6=6,
-  ADC_Channel7=7,
-#if defined __SAMD21J18A__
-  ADC_Channel8=8,
-  ADC_Channel9=9,
-#endif // __SAMD21J18A__
-  ADC_Channel10=10,
-  ADC_Channel11=11,
-#if defined __SAMD21J18A__
-  ADC_Channel12=12,
-  ADC_Channel13=13,
-  ADC_Channel14=14,
-  ADC_Channel15=15,
-#endif // __SAMD21J18A__
-  ADC_Channel16=16,
-  ADC_Channel17=17,
-  ADC_Channel18=18,
-  ADC_Channel19=19,
-  DAC_Channel0,
-} EAnalogChannel ;
+	No_ADC_Channel = -1,
+	ADC_Channel0 = 0,
+	ADC_Channel1,
+	ADC_Channel2,
+	ADC_Channel3,
+	ADC_Channel4,
+	ADC_Channel5,
+	ADC_Channel6,
+	ADC_Channel7,
+	ADC_Channel8,
+	ADC_Channel9,
+	ADC_Channel10,
+	ADC_Channel11,
+	ADC_Channel12,
+	ADC_Channel13,
+	ADC_Channel14,
+	ADC_Channel15,
+	ADC_Channel16,
+	ADC_Channel17,
+	ADC_Channel18,
+	ADC_Channel19,
+};
+
+extern const enum AdcChannel AdcChannelMapping[];
+
 
 // Definitions for TC channels
 typedef enum _ETCChannel
@@ -130,37 +128,6 @@ typedef enum _EPWMChannel
 #endif // __SAMD21J18A__
 } EPWMChannel ;
 
-typedef enum _EPortType
-{
-  NOT_A_PORT=-1,
-  PORTA=0,
-  PORTB=1,
-  PORTC=2,
-} EPortType ;
-
-typedef enum
-{
-  EXTERNAL_INT_0 = 0,
-  EXTERNAL_INT_1,
-  EXTERNAL_INT_2,
-  EXTERNAL_INT_3,
-  EXTERNAL_INT_4,
-  EXTERNAL_INT_5,
-  EXTERNAL_INT_6,
-  EXTERNAL_INT_7,
-  EXTERNAL_INT_8,
-  EXTERNAL_INT_9,
-  EXTERNAL_INT_10,
-  EXTERNAL_INT_11,
-  EXTERNAL_INT_12,
-  EXTERNAL_INT_13,
-  EXTERNAL_INT_14,
-  EXTERNAL_INT_15,
-  EXTERNAL_INT_NMI,
-  EXTERNAL_NUM_INTERRUPTS,
-  NOT_AN_INTERRUPT = -1,
-  EXTERNAL_INT_NONE = NOT_AN_INTERRUPT,
-} EExt_Interrupts ;
 
 //A    B                 C       D          E      F   G   H
 //EIC REF ADC AC PTC DAC SERCOM SERCOM_ALT TC/TCC TCC COM AC/GCLK
@@ -176,42 +143,11 @@ typedef enum _EPioType
   PIO_TIMER_ALT,        /* The pin is controlled by the associated signal of peripheral F. */
   PIO_COM,              /* The pin is controlled by the associated signal of peripheral G. */
   PIO_AC_CLK,           /* The pin is controlled by the associated signal of peripheral H. */
-  PIO_DIGITAL,          /* The pin is controlled by PORT. */
-  PIO_INPUT,            /* The pin is controlled by PORT and is an input. */
-  PIO_INPUT_PULLUP,     /* The pin is controlled by PORT and is an input with internal pull-up resistor enabled. */
-  PIO_OUTPUT,           /* The pin is controlled by PORT and is an output. */
 
   PIO_PWM=PIO_TIMER,
   PIO_PWM_ALT=PIO_TIMER_ALT,
 } EPioType ;
 
-/**
- * Pin Attributes to be OR-ed
- */
-#define PIN_ATTR_NONE          (0UL<<0)
-#define PIN_ATTR_COMBO         (1UL<<0)
-#define PIN_ATTR_ANALOG        (1UL<<1)
-#define PIN_ATTR_DIGITAL       (1UL<<2)
-#define PIN_ATTR_PWM           (1UL<<3)
-#define PIN_ATTR_TIMER         (1UL<<4)
-#define PIN_ATTR_TIMER_ALT     (1UL<<5)
-#define PIN_ATTR_EXTINT        (1UL<<6)
-
-/* Types used for the table below */
-typedef struct _PinDescription
-{
-  EPortType       ulPort ;
-  uint32_t        ulPin ;
-  EPioType        ulPinType ;
-  uint32_t        ulPinAttribute ;
-  EAnalogChannel  ulADCChannelNumber ; /* ADC Channel number in the SAM device */
-  EPWMChannel     ulPWMChannel ;
-  ETCChannel      ulTCChannel ;
-  EExt_Interrupts ulExtInt ;
-} PinDescription ;
-
-/* Pins table to be instantiated into variant.cpp */
-extern const PinDescription g_APinDescription[] ;
 
 /* Generic Clock Multiplexer IDs */
 #define GCM_DFLL48M_REF           (0x00U)
@@ -251,7 +187,3 @@ extern const PinDescription g_APinDescription[] ;
 #define GCM_PTC                   (0x22U)
 #define GCM_I2S_0                 (0x23U)
 #define GCM_I2S_1                 (0x24U)
-
-#ifdef __cplusplus
-} // extern "C"
-#endif

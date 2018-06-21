@@ -134,6 +134,7 @@
             <Value>..\include\core\samd21\include\pio</Value>
             <Value>%24(PackRepoDir)\arm\cmsis\5.0.1\CMSIS\Include\</Value>
             <Value>%24(PackRepoDir)\atmel\SAMD21_DFP\1.2.280\samd21a\include</Value>
+            <Value>../include/FreeRTOS</Value>
           </ListValues>
         </armgcccpp.compiler.directories.IncludePaths>
         <armgcccpp.compiler.optimization.level>Optimize for size (-Os)</armgcccpp.compiler.optimization.level>
@@ -245,6 +246,7 @@
             <Value>..\include\core\samd21\include\pio</Value>
             <Value>%24(PackRepoDir)\arm\cmsis\5.0.1\CMSIS\Include\</Value>
             <Value>%24(PackRepoDir)\atmel\SAMD21_DFP\1.2.280\samd21a\include</Value>
+            <Value>../include/FreeRTOS</Value>
           </ListValues>
         </armgcccpp.compiler.directories.IncludePaths>
         <armgcccpp.compiler.optimization.level>Optimize for size (-Os)</armgcccpp.compiler.optimization.level>
@@ -652,19 +654,7 @@
     <Compile Include="include\core\wiring.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="include\core\wiring_analog.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="include\core\wiring_constants.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="include\core\wiring_digital.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="include\core\wiring_private.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="include\core\wiring_shift.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="include\core\WMath.h">
@@ -817,22 +807,10 @@
     <Compile Include="src\core\USB\USBCore.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\core\WInterrupts.c">
+    <Compile Include="src\core\WInterrupts.cpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\core\wiring.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="src\core\wiring_analog.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="src\core\wiring_digital.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="src\core\wiring_private.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="src\core\wiring_shift.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\core\WMath.cpp">

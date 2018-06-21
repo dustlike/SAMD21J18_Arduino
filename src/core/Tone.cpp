@@ -19,6 +19,8 @@
 #include "Tone.h"
 #include "variant.h"
 
+
+#if 0
 #define WAIT_TC16_REGS_SYNC(x) while(x->COUNT16.STATUS.bit.SYNCBUSY);
 
 uint32_t toneMaxFrequency = F_CPU / 2;
@@ -184,4 +186,6 @@ void Tone_Handler (void)
 
 #ifdef __cplusplus
 }
+#endif
+
 #endif
