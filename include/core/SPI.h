@@ -42,3 +42,6 @@ public:
 private:
 	SERCOM_SPI *sercom;
 };
+
+
+extern SerialPerIface SPI;

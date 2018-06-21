@@ -21,6 +21,9 @@
 #include <Arduino.h>
 
 
+SerialPerIface SPI;
+
+
 
 void SerialPerIface::begin(SERCOM *scm, uint32_t freqSCK, BitOrder bitOrder, SercomSpiClockMode clockMode, uint16_t pinMISO, uint16_t pinSCK, uint16_t pinMOSI, SercomRXPad padRX, SercomSpiTXPad padTX)
 {

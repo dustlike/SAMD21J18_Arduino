@@ -87,3 +87,6 @@ private:
 	
 	uint32_t master_mode_clock;
 };
+
+
+extern TwoWire Wire;

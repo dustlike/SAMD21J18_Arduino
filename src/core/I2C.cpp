@@ -21,6 +21,10 @@
 #include <Arduino.h>
 
 
+TwoWire Wire;
+
+
+
 TwoWire::TwoWire()
 {
 	master_mode_clock = DEFAULT_TWI_CLOCK;
