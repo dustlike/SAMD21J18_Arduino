@@ -78,12 +78,10 @@ void loop( void ) ;
 #ifdef __cplusplus
   #include "WCharacter.h"
   #include "WString.h"
-  #include "Tone.h"
   #include "WMath.h"
   #include "HardwareSerial.h"
   #include "I2C.h"
   #include "SPI.h"
-  #include "pulse.h"
   #include "GPIO.h"
 #endif
 #include "delay.h"

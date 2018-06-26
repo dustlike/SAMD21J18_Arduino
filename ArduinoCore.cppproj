@@ -327,9 +327,6 @@
     <Compile Include="include\core\Printable.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="include\core\pulse.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="include\core\RingBuffer.h">
       <SubType>compile</SubType>
     </Compile>
@@ -615,9 +612,6 @@
     <Compile Include="include\core\Stream.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="include\core\Tone.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="include\core\I2C.h">
       <SubType>compile</SubType>
     </Compile>
@@ -771,12 +765,6 @@
     <Compile Include="src\core\Print.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="src\core\pulse.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="src\core\pulse_asm.S">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="src\core\RingBuffer.cpp">
       <SubType>compile</SubType>
     </Compile>
@@ -790,9 +778,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\core\Stream.cpp">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="src\core\Tone.cpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\core\USB\CDC.cpp">
