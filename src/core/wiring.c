@@ -57,16 +57,6 @@ void calibrateADC()
  */
 void init( void )
 {
-  #if 0
-  // Set Systick to 1ms interval, common to all Cortex-M variants
-  if ( SysTick_Config( SystemCoreClock / 1000 ) )
-  {
-    // Capture error
-    while ( 1 ) ;
-  }
-  #endif
-  NVIC_SetPriority (SysTick_IRQn,  (1 << __NVIC_PRIO_BITS) - 2);  /* set Priority for Systick Interrupt (2nd lowest) */
-
   // Clock SERCOM for Serial
   PM->APBCMASK.reg |= PM_APBCMASK_SERCOM0 | PM_APBCMASK_SERCOM1 | PM_APBCMASK_SERCOM2 | PM_APBCMASK_SERCOM3 | PM_APBCMASK_SERCOM4 | PM_APBCMASK_SERCOM5 ;
 
