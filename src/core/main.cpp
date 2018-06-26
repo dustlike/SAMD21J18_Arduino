@@ -32,21 +32,20 @@ extern "C" void __libc_init_array(void);
  */
 int main( void )
 {
-  init();
+	init();
   
-  __libc_init_array();
+	__libc_init_array();
 
-  initVariant();
+	initVariant();
 
 #if defined(USBCON)
-  //USBDevice.init();
-  //USBDevice.attach();
+	USBDevice.init();
 #endif
 
-  setup();
+	setup();
   
-  vTaskStartScheduler();
-  for (;;) ;
+	vTaskStartScheduler();
+	for (;;) ;
 
-  return 0;
+	return 0;
 }
